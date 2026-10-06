@@ -1,0 +1,34 @@
+# Render Blueprint specification for CyberRisk
+# Documentation: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: cyberrisk
+    runtime: python
+    plan: free
+    region: oregon # choices: oregon, frankfurt, ohio, singapore
+    buildCommand: "pip install -r requirements.txt && python -m app.demo.setup"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /api/health
+    autoDeploy: true
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.4
+      - key: LOG_LEVEL
+        value: INFO
+      - key: LLM_PROVIDER
+        value: auto
+      - key: GEMINI_API_KEY
+        sync: false # Set securely in Render dashboard
+      - key: GROQ_API_KEY
+        sync: false # Set securely in Render dashboard
+      - key: NVD_API_KEY
+        sync: false # Optional: raises NVD rate limit
+
+    # NOTE: If upgrading from Free to Starter plan ($7/mo), you can enable persistent storage
+    # for SQLite database persistence across deploys by uncommenting the disk block below:
+    # disk:
+    #   name: cyberrisk-data
+    #   mountPath: /opt/render/project/src/data
+    #   sizeGB: 1

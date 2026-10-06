@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyberRisk</title>
+  <meta name="description" content="Cyber risk and GRC platform with deterministic scoring, governed AI and public threat data.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%233a5a78'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Primary">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>CyberRisk</div>
+      <button class="ws-btn" id="ws-btn" aria-label="Switch or manage workspaces">
+        <span class="small muted">Workspace</span>
+        <span class="ws-line"><strong id="ws-name">…</strong><span id="ws-kind" class="badge outline"></span></span>
+      </button>
+      <label class="field role-field">View as
+        <select id="role" aria-label="Role view"></select>
+      </label>
+      <nav class="nav" id="nav" aria-label="Main navigation"></nav>
+    </aside>
+    <div class="main">
+      <header class="topbar">
+        <button class="btn menu-btn" id="menu-btn" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">Menu</button>
+        <span class="muted small tagline">Cyber risk &amp; GRC platform</span>
+        <span class="spacer"></span>
+        <span id="status"></span>
+        <button class="btn" id="ask-btn">Ask about data</button>
+      </header>
+      <main class="content" id="main" tabindex="-1">
+        <div id="view"></div>
+      </main>
+    </div>
+  </div>
+  <noscript><p style="padding:24px">CyberRisk needs JavaScript enabled.</p></noscript>
+  <script src="/static/vendor/chart.umd.min.js"></script>
+  <script type="module" src="/static/js/main.js"></script>
+</body>
+</html>
